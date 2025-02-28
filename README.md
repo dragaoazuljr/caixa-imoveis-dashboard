@@ -1,5 +1,7 @@
 # 🏠 Sistema de Visualização de Imóveis da Caixa  
 
+> **Atenção:** A documentação técnica do projeto (leitura obrigatória) está no arquivo [DOCUMENTATION.md](DOCUMENTATION.md).
+
 ## 📌 Descrição do Projeto  
 Este sistema permite fazer upload do arquivo CSV disponibilizado pela Caixa Econômica Federal, contendo imóveis à venda, e exibi-los em um mapa interativo. Além disso, oferece informações adicionais sobre os imóveis, como preço médio do m² na região, índices de qualidade de vida, e histórico do local via Street View.
 
@@ -46,12 +48,12 @@ Feature que forem finalizadas devem ser atualizadas com ✅
 ### Release 1 - MVP (Em desenvolvimento)  
 
 ## Próximas Tarefas  
-- Definir escopo técnico do Projeto
-- Definição de tecnologias
-- Criação de repositórios.
 
 ## O que já foi feito  
 ✅ Definição de escopo inicial do projeto  
+✅ Definir escopo técnico do Projeto
+✅ Definição de tecnologias
+✅ Criação de repositórios.
 
 ## Licença  
 Este projeto é open-source e pode ser usado conforme a licença [MIT](LICENSE).

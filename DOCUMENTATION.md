@@ -6,20 +6,19 @@ Esta documentação descreve a arquitetura, as tecnologias e as decisões técni
 
 ### 3.1. Framework e Ferramentas
 
-- **Framework Principal:** Angular  
-  Devido à experiência do time e à robustez oferecida pelo Angular para desenvolvimento de Single Page Applications (SPAs).
+- **Framework Principal:** Angular
+    Devido à experiência do time e à robustez oferecida pelo Angular para desenvolvimento de Single Page Applications (SPAs).
 
-- **Gerenciamento de Estado:**  
-  Utilização de **NgRx** ou **NGXS** para centralizar e gerenciar o estado da aplicação.  
-  - NgRx segue o padrão Redux e é amplamente adotado.
-  - NGXS é uma alternativa mais simples e moderna.
+- **Gerenciamento de Estado:**
+    Utilização de **NgRx** para centralizar e gerenciar o estado da aplicação.
+    - NgRx is used to manage the application state.
 
-- **Testes Unitários:**  
-  Angular já integra **Jasmine** e **Karma** para testes unitários de componentes, serviços e gerenciamento de estado.
+- **Testes Unitários:**
+    Angular já integra **Jasmine** e **Karma** para testes unitários de componentes, serviços e gerenciamento de estado.
 
-- **Mapas e Visualizações:**  
-  - **Leaflet** ou **Mapbox GL JS** para renderização de mapas interativos.
-  - **Google Maps API** para integrar o Street View e seu histórico, além do modo satélite.
+- **Mapas e Visualizações:**
+    - **Leaflet** ou **Mapbox GL JS** para renderização de mapas interativos.
+    - **Google Maps API** para integrar o Street View e seu histórico, além do modo satélite.
 
 ### 3.2. Estrutura de Diretórios Sugerida
 
@@ -38,7 +37,7 @@ Esta documentação descreve a arquitetura, as tecnologias e as decisões técni
       /components         # Componentes UI globais (botões, filtros, etc.)
       /directives         # Diretivas personalizadas
       /pipes              # Pipes para formatação e transformação de dados
-    /store                # Gerenciamento de estado (NgRx/NGXS)
+    /store                # Gerenciamento de estado (NgRx)
       /actions            # Ações para modificar o estado
       /reducers           # Funções puras para atualização do estado
       /effects            # Efeitos para operações assíncronas (chamadas a APIs, etc.)
@@ -53,21 +52,21 @@ Esta documentação descreve a arquitetura, as tecnologias e as decisões técni
 ## 4. Integração com APIs Externas e Considerações sobre Backend
 
 ### 4.1. Cenário Atual (Apenas Front-End)
-- **Processamento do CSV:**  
-  O front-end realizará o upload e o processamento do CSV de forma local, sem necessidade de persistência em um banco de dados.
-- **Busca de Dados Adicionais:**  
-  A aplicação poderá consultar APIs externas diretamente do front-end para obter dados como preço médio por m² e histórico de preços.  
-  **Atenção:** Caso alguma API necessite de uma chave de API, o uso direto no front-end pode representar um risco.  
-  - Neste cenário, pode-se optar por um back-end mínimo no futuro para intermediar essas chamadas.
+- **Processamento do CSV:**
+    O front-end realizará o upload e o processamento do CSV de forma local, sem necessidade de persistência em um banco de dados.
+- **Busca de Dados Adicionais:**
+    A aplicação poderá consultar APIs externas diretamente do front-end para obter dados como preço médio por m² e histórico de preços.
+    **Atenção:** Caso alguma API necessite de uma chave de API, o uso direto no front-end pode representar um risco.
+    - Neste cenário, pode-se optar por um back-end mínimo no futuro para intermediar essas chamadas.
 
 ### 4.2. Futuras Considerações para Backend
 Embora a aplicação seja inicialmente implementada apenas no front-end, as seguintes funcionalidades podem exigir um back-end:
-- **Intermediação de APIs com Chaves Sensíveis:**  
-  Um serviço back-end para intermediar chamadas a APIs externas que requerem chaves, evitando a exposição dessas chaves no cliente.
-- **Autenticação com JWT:**  
-  Mesmo sem um sistema de login para usuários, a comunicação segura com serviços externos pode se beneficiar do uso de tokens JWT via interceptadores HTTP no Angular.
-- **Armazenamento Temporário/Caching:**  
-  Caso haja necessidade de cache ou armazenamento temporário dos dados processados para melhorar a performance.
+- **Intermediação de APIs com Chaves Sensíveis:**
+    Um serviço back-end para intermediar chamadas a APIs externas que requerem chaves, evitando a exposição dessas chaves no cliente.
+- **Autenticação com JWT:**
+    Mesmo sem um sistema de login para usuários, a comunicação segura com serviços externos pode se beneficiar do uso de tokens JWT via interceptadores HTTP no Angular.
+- **Armazenamento Temporário/Caching:**
+    Caso haja necessidade de cache ou armazenamento temporário dos dados processados para melhorar a performance.
 
 ---
 
@@ -76,7 +75,7 @@ Embora a aplicação seja inicialmente implementada apenas no front-end, as segu
 ### Upload e Processamento do CSV
 1. O usuário realiza o upload do arquivo CSV.
 2. Um serviço no Angular processa o arquivo localmente, extraindo os dados necessários.
-3. Os dados são armazenados no estado global (NgRx/NGXS) para serem acessados pelos componentes.
+3. Os dados são armazenados no estado global (NgRx) para serem acessados pelos componentes.
 
 ### Exibição e Interação no Mapa
 1. Os dados dos imóveis são enviados para um componente do mapa (Leaflet/Mapbox).
@@ -92,31 +91,31 @@ Embora a aplicação seja inicialmente implementada apenas no front-end, as segu
 
 ## 6. Considerações sobre Segurança
 
-- **Chaves de API:**  
-  Evitar expor chaves de API no front-end. Em futuras implementações, utilizar um back-end ou serviços de proxy para gerenciar chamadas que necessitem de autenticação sensível.
-  
-- **Comunicação Segura:**  
-  Garantir que todas as requisições a serviços externos sejam feitas por HTTPS.
-  
-- **JWT (Futuro):**  
-  Preparar a infraestrutura para autenticação via JWT, utilizando interceptadores HTTP para adicionar tokens às requisições quando necessário.
+- **Chaves de API:**
+    Evitar expor chaves de API no front-end. Em futuras implementações, utilizar um back-end ou serviços de proxy para gerenciar chamadas que necessitem de autenticação sensível.
+
+- **Comunicação Segura:**
+    Garantir que todas as requisições a serviços externos sejam feitas por HTTPS.
+
+- **JWT (Futuro):**
+    Preparar a infraestrutura para autenticação via JWT, utilizando interceptadores HTTP para adicionar tokens às requisições quando necessário.
 
 ---
 
 ## 7. Testes e Qualidade
 
-- **Testes Unitários:**  
-  Utilização do Jasmine e Karma para testar componentes, serviços e gerenciamento de estado.
-- **Testes de Integração:**  
-  Testar a integração entre componentes e a comunicação com APIs externas (simulada, se necessário).
-- **Boas Práticas:**  
-  Adoção de linting, code reviews e integração contínua para garantir a qualidade do código.
+- **Testes Unitários:**
+    Utilização do Jasmine e Karma para testar componentes, serviços e gerenciamento de estado.
+- **Testes de Integração:**
+    Testar a integração entre componentes e a comunicação com APIs externas (simulada, se necessário).
+- **Boas Práticas:**
+    Adoção de linting, code reviews e integração contínua para garantir a qualidade do código.
 
 ---
 
 ## 8. Conclusão
 
-A arquitetura definida foca inicialmente em uma aplicação front-end robusta utilizando Angular, com gerenciamento de estado (NgRx ou NGXS) e testes unitários integrados. A aplicação processará localmente os dados do CSV e exibirá os imóveis em um mapa interativo com visualizações enriquecidas. Funcionalidades que exijam segurança adicional (como o uso de chaves de API ou autenticação) serão contempladas para uma futura integração de um back-end mínimo.
+A arquitetura definida foca inicialmente em uma aplicação front-end robusta utilizando Angular, com gerenciamento de estado (NgRx) e testes unitários integrados. A aplicação processará localmente os dados do CSV e exibirá os imóveis em um mapa interativo com visualizações enriquecidas. Funcionalidades que exijam segurança adicional (como o uso de chaves de API ou autenticação) serão contempladas para uma futura integração de um back-end mínimo.
 
 Esta abordagem permite um desenvolvimento ágil do MVP, com a flexibilidade para escalar e integrar novos recursos conforme o projeto evolui.
 

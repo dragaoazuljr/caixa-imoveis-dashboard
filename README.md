@@ -48,8 +48,35 @@ Feature que forem finalizadas devem ser atualizadas com ✅
 ### Release 1 - MVP (Em desenvolvimento)  
 
 ## Próximas Tarefas  
+- 📌 Próximas Tarefas - Release 1 (MVP)
+- 🔧 Tarefas Técnicas
+    - Configurar testes unitários no projeto
+    - Configuração inicial do projeto (estrutura de pastas, ambiente de desenvolvimento, documentação interna)
+- 🚀 Desenvolvimento das Funcionalidades
+    -  Implementar funcionalidade de upload do arquivo CSV
+    -  Criar serviço para processar e limpar os dados do CSV
+    -  Desenvolver a exibição dos imóveis no mapa interativo
+    -  Implementar filtros básicos (cidade, tipo de imóvel, faixa de preço)
+    -  Criar componente para exibição dos detalhes do imóvel ao clicar no mapa
+    -  Integrar visualizações do imóvel:
+    -  Modo satélite
+    -  Street View integrado
+    -  Histórico do Street View (quando disponível)
+- 🧪 Testes e Validação
+    -  Criar testes unitários para as principais funcionalidades
+    -  Testes de usabilidade para a interface do usuário
+    -  Validação dos dados processados do CSV
+- 📅 Gestão e Organização
+    -  Criar documentação técnica para o front-end
+    -  Configurar ambiente de deploy para testes internos
+    -  Definir backlog para a próxima fase
 
-## O que já foi feito  
+## O que já foi feito
+✅ Configured ESLint and Prettier for code quality.
+✅ Created Angular project with routing and SCSS support.
+✅ Created file upload component (`upload-csv`).
+✅ Implemented NgRx store for managing CSV data.
+✅ Implemented effect for handling CSV upload and parsing.
 ✅ Definição de escopo inicial do projeto  
 ✅ Definir escopo técnico do Projeto
 ✅ Definição de tecnologias
